@@ -38,67 +38,55 @@ import java.util.Arrays;
  * Created by jay on 2018/4/16.
  */
 public class MergeSort {
-
-    /**
-     *
-     * @param a    待排序数组
-     * @param p    起始位置
-     * @param q    结束位置
-     * @return   排好序的数组
-     */
-
-    public static void MergeSort(int[]a , int p, int q ){
-        if (p < q)
+    public static void mergeSort(int[] a , int m, int n){
+        if ( m < n )
         {
-            int r = (p+q) / 2 ;
-            MergeSort(a , p, r );
-            MergeSort(a , r+1, q );
-            MergeSortQueue(a, p, r, q);
+            int mid = (m+n)/2 ;
+            mergeSort(a,m,mid);
+            mergeSort(a,mid+1,n);
+            merging(a,m,mid,n);
         }
+        else
+        {
+            return;
+        };
+        //System.out.println(Arrays.toString(a));
     }
 
-    public static void MergeSortQueue(int[]a , int p, int r, int q){
-        int leftLength = r - p + 1;
-        int rightLenth = q - r + 1;
-
-        int[] left = new int[leftLength+1];
-        int[] right = new int[rightLenth+1];
-        int[] output = new int[q-p+1];
-
-        for (int i = 0 ; i < leftLength ; i ++)
-            left[i] = a[p+i];
-        left[-1] = Integer.MAX_VALUE;
-        for(int i = 0 ; i < rightLenth ; i ++)
-            right[i] = a[r+1+i];
-        right[-1] = Integer.MAX_VALUE;
-        for(int i=0 ; i<q-p+1 ;i++ )
-            output[i] = a[p+i];
-
-        int j =0,k=0,l = 0;
-        while (j<leftLength || k < rightLenth)
-        {
-            if(left[j] <=  right[k])
-            {
-                output[l] = left[j];
-                j++;
+    public static void merging(int[] a, int m, int mid, int n){
+        int i = m ,  j = mid+1 ;
+        int k = 0;
+        int[] temp = new int[n-m+1];
+        //左右两个数组的值比较，选择一个较小的值放到temp数组里。
+        while(i<=mid && j<=n){
+            if(a[i]<=a[j]){
+                temp[k++] = a[i++];
             }
             else{
-                output[l] = right[k];
-                k++;
+                temp[k++] = a[j++];
             }
-            l++;
         }
-        for(int i=0 ; i < q - p + 1 ; i ++)
+
+        //左边的数组剩余的数据都放到temp数组里。
+        while(i<=mid){
+            temp[k++] = a[i++];
+        }
+
+        //右边的数组剩余的数据都放到temp数组里。
+        while(j<=n){
+            temp[k++] = a[j++];
+        }
+
+        for(int c=0 ; c<n-m+1 ; c++)
         {
-            a[p+i] = output[i];
+            a[m+c] = temp[c];
         }
+
     }
 
     public static void main(String[] args){
-        int[] a = {23,98,2,17,31,93};
-        MergeSort.MergeSort(a,0,a.length);
+        int[] a = {8,23,1,345,12,9,3,123,2345,342,12};
+        MergeSort.mergeSort(a,0,a.length-1);
         System.out.println(Arrays.toString(a));
     }
-
-
 }
