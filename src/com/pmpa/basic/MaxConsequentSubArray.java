@@ -58,8 +58,8 @@ public class MaxConsequentSubArray {
 
 
     public static int[] findMaxSubArray(int[] a , int m, int n){
-        int [] fin =null;
-        if (m>n){
+        int[] fin =null;
+        if (m<n){
             int mid = (m+n)/2;
             int[] left_array = findMaxSubArray(a,m,mid);
             int[] right_array = findMaxSubArray(a,mid+1,n);
@@ -71,18 +71,21 @@ public class MaxConsequentSubArray {
                 fin = right_array;
             else if (crossing_array[0] >= left_array[0] && crossing_array[0] >= right_array[0])
                 fin= crossing_array;
+            System.out.print("比较：" + Arrays.toString(left_array) + "||" + Arrays.toString(crossing_array) + "||" + Arrays.toString(right_array) + "  ===> " );
         }
         else
         {
             int[] output = {a[m],m,m};
             fin = output;
         }
+
+        System.out.println(Arrays.toString(fin));
         return fin;
     }
 
     public static void main(String[] args)
     {
-        int[] test = {13,-3,-25,20,-3,-16,-23,18,20,-7,12,-5,-22,15,-4,7};
+        int[] test = {13,46,-25,20,-3,-16,-23,18,-20,-7,12,-5,-22,15,-4,7};
 
         int[] output = MaxConsequentSubArray.findMaxSubArray(test,0,15);
         System.out.println(Arrays.toString(output));
