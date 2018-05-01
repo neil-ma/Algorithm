@@ -3,6 +3,8 @@ package com.pmpa.basic;
 import java.util.Arrays;
 
 /**
+ * Created by jay on 2018/4/16.
+ *
  * 归并排序实现算法，采用了分治策略，递归完成。  伪代码：
  * MergeSrot(a, p, q)       //a是待排序数组，p是起始位置，q是结束位置。
  *   r = (q-p)/2  + p           //取p，q的中位数，拆为2个来进行分治处理。
@@ -35,7 +37,7 @@ import java.util.Arrays;
  *      cursor3 ++
  *
  *
- * Created by jay on 2018/4/16.
+ *
  */
 public class MergeSort {
     public static void mergeSort(int[] a , int m, int n){
