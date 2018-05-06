@@ -15,8 +15,6 @@ import java.util.Arrays;
  *      (2)传统的简单方式：
  */
 public class QuickSort {
-
-
     public static void sort(int[] a, int p, int r){
         if(p<r) {
             int q = partition(a, p, r);
