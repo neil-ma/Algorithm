@@ -11,6 +11,12 @@ import java.util.Arrays;
  * 堆的概念：
  * 堆：堆是一个数组，可以被看成是一个近似的完全二叉树。
  *     表示堆的数组包含2个属性，一个是数组的长度，a.length ； 一个表示有多少个堆元素存储在这个数组中，a.heap_size。
+ * 优先队列：是一种用来维护一组元素构成的集合S的数据结构。其中的每个元素都有一个相关值，称为关键字(Key)。
+ *      操作：
+ *      INSERT(S,x) ： 将x插入集合。
+ *      MAXIMUM(S)：返回S中最大关键字的元素。
+ *      EXTRACT-MAX(S): 返回并删除S中最大关键字的元素。
+ *      INCREASE-KEY(S,x,key)： 将元素x的关键字增加到key，假设key大于原来x的关键字。
  *
  */
 public class Heap {
@@ -20,7 +26,7 @@ public class Heap {
     private int heap_size;
 
     /**
-     * 将数组inial初始化成一个无序堆。
+     * 将数组inial初始化成一个最大堆。在初始化时，直接最大堆。
      * @param inial
      */
     public Heap(int[] inial)
@@ -32,6 +38,7 @@ public class Heap {
         {
             data[i] = inial[i];
         }
+        maximizeHeap();
     }
 
 
@@ -143,6 +150,38 @@ public class Heap {
         a[m] = a[n];
         a[n] = c;
     }
+
+
+    //优先队列（最大优先队列）操作----------------------------------------------
+    //返回优先队列中最大的元素的关键字。
+    public int maximum()
+    {
+        int max=data[0];
+        return max;
+    }
+
+    //返回最大元素的关键字，并在优先队列中去掉这个元素。
+    public int extract_max(){
+        int max = 0;
+        return max;
+    }
+
+    //将第i个节点的关键字增加到key
+    public void increase_key(int i,int key)
+    {
+
+    }
+
+    //将key值，插入到该优先队列，并保证原来最大优先队列的属性正确。
+    public void insert_queue(int key){
+
+    }
+    //优先队列（最大优先队列）操作----------------------------------------------
+
+
+
+
+
 
     public static void main(String[] args) {
         int[] a = {4,1,3,2,16,9,10,14,8,7};
