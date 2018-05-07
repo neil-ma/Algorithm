@@ -13,8 +13,8 @@ import java.util.Arrays;
 public class QueueArray {
     private int[] data;    //数据存储
     private int size;      //队列大小
-    private int head;      //队列头指针
-    private int tail;      //队列尾指针
+    private int head;      //队列头指针   head指针指向头节点。
+    private int tail;      //队列尾指针   tail指针指向尾节点。《书中》将尾指针指向尾部节点的下一个节点。
 
     //初始化一个空的队列，head和tail指针都指向开始的0，建一个长度为x的空数组。
     public QueueArray(int x) throws Exception
