@@ -63,10 +63,10 @@ public class QueueArray {
         }
         else{
             dequeue = data[head];
-            data[head] = 0 ;
+            data[head] = 0 ; //出队的节点标记为0
             head = (head == data.length-1)?0:head+1;
         }
-        size --;
+        size--;
         System.out.println(Arrays.toString(data));
         return dequeue;
     }
