@@ -24,71 +24,71 @@ public class QueueArray {
         }
         else {
             data = new int[x];
-            this.size = 0;
-            this.head = 0;
-            this.tail = -1;
+            size = 0;
+            head = 0;
+            tail = -1;
         }
     }
 
     public void enqueue(int x){
         //数组溢出，需要扩展数组。 头尾指针相同时，是空队列。
-        if(this.data.length == this.size){
-            int[] data_incre = new int[this.size*2];
-            for(int j=0;j<this.size;j++)
+        if(data.length == size){
+            int[] data_incre = new int[size*2];
+            for(int j=0;j<size;j++)
             {
-                int data_index = (this.head+j>=this.size)?((this.head + j) - this.size):(this.head + j);
+                int data_index = (head+j>=size)?((head + j) - size):(head + j);
                 //重新构造一个数组，头指针指向0，尾指针指向最后一个节点
-                data_incre[j] = this.data[data_index];
+                data_incre[j] = data[data_index];
             }
-            this.head = 0 ;
-            this.tail = this.size - 1;
-            this.data = data_incre;
+            head = 0 ;
+            tail = size - 1;
+            data = data_incre;
         }
-        if (this.tail == this.data.length - 1){
-            this.tail = 0;
+        if (tail == data.length - 1){
+            tail = 0;
         }
         else{
-            this.tail++;
+            tail++;
         }
-        this.data[this.tail] = x;
-        this.size++;
-        System.out.println(Arrays.toString(this.data));
+        data[tail] = x;
+        size++;
+        System.out.println(Arrays.toString(data));
     }
 
     public int dequeue() throws Exception{
         int dequeue = 0 ;
-        if(this.size == 0)
+        if(size == 0)
         {
             throw new Exception("The queue is empty!!");
         }
         else{
-            dequeue = this.data[this.head];
-            this.data[this.head] = 0 ;
-            this.head = (this.head == this.data.length-1)?0:this.head+1;
+            dequeue = data[head];
+            data[head] = 0 ;
+            head = (head == data.length-1)?0:head+1;
         }
-        this.size --;
-        System.out.println(Arrays.toString(this.data));
+        size --;
+        System.out.println(Arrays.toString(data));
         return dequeue;
     }
 
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
-        if(this.head == this.tail)
+        if(head == tail)
         {sb.append("");}
-        else if(this.head < this.tail)
+        else if(head < tail)
         {
-            for(int j =this.head ; j< this.tail+1;j++)
-            {sb.append(this.data[j]);
+            for(int j =head ; j< tail+1;j++)
+            {sb.append(data[j]);
             sb.append(",");}
         }
         else{
-            for(int j =this.head ; j< this.data.length;j++)
-            {sb.append(this.data[j]);
+            for(int j =head ; j< data.length;j++)
+            {sb.append(data[j]);
                 sb.append(",");}
-            for (int j=0;j<=this.tail;j++)
+            for (int j=0;j<=tail;j++)
             {
-                sb.append(this.data[j]);
+                sb.append(data[j]);
                 sb.append(",");
             }
         }
